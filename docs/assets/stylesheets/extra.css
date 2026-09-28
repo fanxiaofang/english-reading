@@ -125,3 +125,94 @@
   .reading-sentence-card { border-radius: 8px; padding: 1rem 1rem 1.1rem; }
   .reading-overall { padding-inline: 1rem; }
 }
+
+/* Reading notes are a focused learning surface, not a generic documentation page. */
+.reading-page .md-grid { max-width: 90rem; }
+.reading-page .md-main__inner { grid-template-columns: minmax(0, 15rem) minmax(0, 54rem); justify-content: center; }
+.reading-page .md-sidebar--secondary { display: none; }
+.reading-page .md-content__inner { max-width: 54rem; }
+.reading-page .md-typeset h1 { font-size: clamp(2rem, 3vw, 2.4rem); margin-bottom: .35rem; }
+.reading-page .md-typeset h2 { margin-top: 3.5rem; }
+
+.reading-page .reading-overview { max-width: 74ch; }
+.reading-page .reading-overview > h3,
+.reading-page .reading-overview > h4 { color: var(--md-default-fg-color); }
+.reading-page .reading-overview p { font-size: 1.08rem; line-height: 1.9; margin-block: 1.35em; }
+.reading-page .reading-overview > h4 { margin-top: 2rem; }
+
+.reading-page .reading-overall {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 7%, var(--md-default-bg-color));
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 22%, var(--md-default-bg-color));
+  border-radius: 12px;
+  margin-block: 1.5rem 2.75rem;
+  padding: .85rem 1.5rem 1.1rem;
+}
+.reading-page .reading-overall p { font-size: .96rem; line-height: 1.8; }
+.reading-page .reading-overall > h2,
+.reading-page .reading-overall > h4 { font-size: .76rem; letter-spacing: .08em; text-transform: uppercase; }
+
+.reading-page .reading-sentence-card {
+  background: color-mix(in srgb, var(--md-default-bg-color) 91%, var(--md-default-fg-color));
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 22%, transparent);
+  border-radius: 13px;
+  margin: 1.5rem 0;
+  padding: 1.55rem 1.75rem 1.7rem;
+}
+.reading-page .reading-sentence-card > h3 { font-size: 1.05rem; margin: 0 0 1.25rem; }
+.reading-page .reading-sentence-card > :first-child { margin-top: 0; }
+.reading-page .reading-sentence-card > :last-child { margin-bottom: 0; }
+.reading-page .reading-label,
+.reading-page .reading-expression-label {
+  color: var(--md-default-fg-color--light);
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  margin: 1.1rem 0 .25rem;
+  text-transform: uppercase;
+}
+.reading-page .reading-original-label { margin-top: 0; }
+.reading-page .reading-original-content,
+.reading-page .reading-sentence-card p.reading-original-label:not(:only-child) {
+  font-size: 1.08rem;
+  font-weight: 600;
+  line-height: 1.8;
+}
+.reading-page .reading-meaning-content,
+.reading-page .reading-meaning-label + p {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 6%, var(--md-default-bg-color));
+  border: 1px solid color-mix(in srgb, var(--md-primary-fg-color) 13%, transparent);
+  border-radius: 9px;
+  margin-top: .4rem;
+  padding: .7rem .9rem;
+}
+.reading-page .reading-sentence-card ul { margin: .35rem 0 1rem; padding-left: 1.15rem; }
+.reading-page .reading-sentence-card li { margin: .2rem 0; line-height: 1.65; }
+.reading-page .reading-structure-content,
+.reading-page .reading-structure-label + p,
+.reading-page .reading-structure-label { color: var(--md-default-fg-color--light); }
+.reading-page .reading-structure-content,
+.reading-page .reading-structure-label + p { font-size: .9rem; }
+
+.reading-page .reading-expression-card {
+  background: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--md-default-fg-color));
+  border: 1px solid color-mix(in srgb, var(--md-default-fg-color) 15%, transparent);
+  border-radius: 10px;
+  margin: .8rem 0;
+  padding: .85rem 1.1rem 1rem;
+}
+.reading-page .reading-expression-card > h3 { font-size: .98rem; margin: 0 0 .55rem; }
+.reading-page .reading-expression-card p { font-size: .9rem; line-height: 1.65; margin: .35rem 0; }
+.reading-page .reading-expression-card .reading-expression-label { display: block; font-size: .68rem; margin-top: .7rem; }
+.reading-page .reading-article-meta { font-size: .82rem; margin: .15rem 0; }
+
+@media (max-width: 60em) {
+  .reading-page .md-main__inner { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 44.9375em) {
+  .reading-page .md-content__inner { padding-inline: .65rem; }
+  .reading-page .reading-sentence-card { border-radius: 11px; margin-block: 1.15rem; padding: 1.15rem 1rem 1.25rem; }
+  .reading-page .reading-original-content,
+  .reading-page .reading-sentence-card p.reading-original-label:not(:only-child) { font-size: 1.03rem; }
+  .reading-page .reading-overview p { font-size: 1rem; }
+}
