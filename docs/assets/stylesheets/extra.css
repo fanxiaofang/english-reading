@@ -1,127 +1,326 @@
-/* ---------------------------------------------------------------------------
-   Reading-oriented adjustments for long-form technical text.
-
-   These rules only tune measure, rhythm and line height. Colours, components
-   and layout are left to Material for MkDocs.
-   --------------------------------------------------------------------------- */
-
-/* Comfortable line length: cap the article column and let any extra width on
-   large screens go to the sidebars instead. */
-.md-grid {
-  max-width: 76rem;
-}
-
-.md-content__inner {
-  max-width: 44rem;
-  margin-inline: auto;
-}
-
-/* More generous line height than the Material default (1.6). */
-.md-typeset {
-  line-height: 1.75;
-}
-
-.md-typeset p,
-.md-typeset li {
-  line-height: 1.75;
-}
-
-/* Paragraph rhythm that separates paragraphs clearly without splitting lists. */
-.md-typeset p {
-  margin: 1.2em 0;
-}
-
-.md-typeset li > p {
-  margin: 0.4em 0;
-}
-
-/* Keep headings tight internally, and give them room from the text above. */
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4 {
-  line-height: 1.3;
-}
-
-.md-typeset h2 {
-  margin-top: 2em;
-}
-
-/* Code blocks read as a single block rather than as spaced-out lines. */
-.md-typeset pre > code {
-  line-height: 1.55;
-}
-
-/* ---------------------------------------------------------------------------
-   English-reading presentation
-   --------------------------------------------------------------------------- */
-
+/* --------------------------------------------------------------------------
+   Reading-page layout
+   -------------------------------------------------------------------------- */
 :root {
-  --reading-measure: 68ch;
-  --reading-card-border: color-mix(in srgb, var(--md-default-fg-color) 14%, transparent);
-  --reading-card-bg: color-mix(in srgb, var(--md-default-bg-color) 94%, var(--md-default-fg-color));
-  --reading-soft-bg: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--md-primary-fg-color));
+  --reading-measure: 72ch;
+  --reading-border: color-mix(in srgb, var(--md-default-fg-color) 16%, transparent);
+  --reading-border-strong: color-mix(in srgb, var(--md-default-fg-color) 24%, transparent);
+  --reading-surface: color-mix(in srgb, var(--md-default-bg-color) 94%, var(--md-default-fg-color));
+  --reading-soft-surface: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--md-primary-fg-color));
 }
 
-.md-grid { max-width: 90rem; }
-.md-content__inner { max-width: 54rem; padding-bottom: 4rem; }
-.md-typeset { font-size: 0.94rem; line-height: 1.8; text-wrap: pretty; }
-.md-typeset p, .md-typeset li { line-height: 1.8; }
-.md-typeset p { margin: 1.15em 0; }
-.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 { text-wrap: balance; }
-.md-typeset h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; margin-bottom: 0.45rem; }
-.md-typeset h2 { margin-top: 3.25rem; padding-top: 1rem; }
-.md-typeset h3 { margin-top: 2rem; }
-
-/* Article header and metadata */
-.md-content__inner > h1:first-child { margin-top: 0.5rem; }
-.reading-article-meta { color: var(--md-default-fg-color--light); font-size: 0.88rem; margin: 0.2rem 0; }
-.reading-article-meta a { color: var(--md-typeset-a-color); font-weight: 600; }
-.reading-header-spacer { height: 1.5rem; }
-
-/* English-first project overview */
-.reading-overview { font-size: 1.04rem; line-height: 1.9; max-width: var(--reading-measure); }
-.reading-overview p { margin: 1.35em 0; }
-.reading-overview-heading { border-bottom: 0; }
-
-/* Chinese comprehension aid */
-.reading-overall { background: var(--reading-soft-bg); border: 1px solid var(--reading-card-border); border-radius: 10px; margin: 1.5rem 0 2.5rem; padding: 0.5rem 1.35rem 1rem; }
-.reading-overall p { font-size: 0.95rem; }
-
-/* Sentence cards */
-.reading-sentence-card { background: var(--reading-card-bg); border: 1px solid var(--reading-card-border); border-radius: 10px; margin: 1.25rem 0; padding: 1.2rem 1.45rem 1.35rem; }
-.reading-sentence-card > :first-child { margin-top: 0; }
-.reading-sentence-card > :last-child { margin-bottom: 0; }
-.reading-sentence-card h3 { font-size: 1.1rem; margin: 0 0 1rem; }
-.reading-sentence-original { font-size: 1.04rem; line-height: 1.85; }
-.reading-sentence-label { color: var(--md-default-fg-color--light); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: -0.6rem !important; }
-.reading-sentence-meaning { border-top: 1px solid var(--reading-card-border); margin-top: 1rem !important; padding-top: 0.9rem; }
-.reading-sentence-card ul { margin: 0.45rem 0 1rem; }
-.reading-sentence-card li { margin: 0.25rem 0; }
-.reading-sentence-structure { color: var(--md-default-fg-color--light); font-size: 0.92rem; }
-
-/* Compact review cards */
-.reading-expression-card { border-top: 1px solid var(--reading-card-border); margin: 0; padding: 0.8rem 0 0.9rem; }
-.reading-expression-card h3 { font-size: 0.98rem; margin: 0 0 0.35rem; }
-.reading-expression-card p { margin: 0.35rem 0; }
-.reading-expression-card .reading-expression-label { color: var(--md-default-fg-color--light); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
-
-/* Keep navigation useful but secondary */
-.md-sidebar--secondary .md-nav__link { font-size: 0.78rem; }
-.md-sidebar--secondary .md-nav__item .md-nav__link { opacity: 0.78; }
-.md-sidebar--secondary .md-nav__item .md-nav__link--active { font-weight: 700; opacity: 1; }
-
-@media (prefers-color-scheme: dark) {
-  :root { --reading-card-bg: color-mix(in srgb, var(--md-default-bg-color) 94%, white); --reading-soft-bg: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--md-primary-fg-color)); }
+.reading-page .md-grid {
+  max-width: 90rem;
 }
 
-@media (max-width: 76.1875em) {
-  .md-content__inner { padding-inline: 1rem; }
+.reading-page .md-main__inner {
+  grid-template-columns: minmax(0, 14rem) minmax(0, 54rem);
+  justify-content: center;
+  column-gap: 2rem;
+}
+
+.reading-page .md-sidebar--primary {
+  opacity: .78;
+}
+
+.reading-page .md-sidebar--secondary {
+  display: none;
+}
+
+.reading-page .md-content__inner {
+  max-width: 54rem;
+  padding-bottom: 4rem;
+}
+
+.reading-page .md-typeset {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.reading-page .md-typeset p,
+.reading-page .md-typeset li {
+  line-height: 1.8;
+}
+
+.reading-page .md-typeset h1,
+.reading-page .md-typeset h2,
+.reading-page .md-typeset h3,
+.reading-page .md-typeset h4 {
+  text-wrap: balance;
+}
+
+.reading-page .md-typeset h1 {
+  font-size: clamp(2rem, 3.5vw, 2.4rem);
+  letter-spacing: -.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.reading-page .md-typeset h2 {
+  font-size: 1.35rem;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  margin: 3rem 0 1.25rem;
+  padding-top: 0;
+}
+
+.reading-page .md-typeset h3 {
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------------------
+   Header / metadata
+   -------------------------------------------------------------------------- */
+.reading-page .reading-header {
+  margin: .75rem 0 3rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--reading-border);
+}
+
+.reading-page .reading-article > hr {
+  display: none;
+}
+
+.reading-page .reading-header::after {
+  color: var(--md-default-fg-color--light);
+  content: "Technical English Reading Note";
+  display: block;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  margin-top: .7rem;
+  text-transform: uppercase;
+}
+
+.reading-page .reading-header p {
+  display: inline;
+  font-size: .84rem;
+  line-height: 1.6;
+  margin: .65rem 0 0;
+}
+
+.reading-page .reading-source a {
+  color: var(--md-typeset-a-color);
+  font-weight: 650;
+}
+
+.reading-page .reading-source::after {
+  color: var(--md-default-fg-color--light);
+  content: " · ";
+  font-weight: 400;
+}
+
+.reading-page .reading-date {
+  color: var(--md-default-fg-color--light);
+}
+
+/* --------------------------------------------------------------------------
+   Project overview / overall meaning
+   -------------------------------------------------------------------------- */
+.reading-page .reading-overview {
+  max-width: var(--reading-measure);
+}
+
+.reading-page .reading-overview h2 {
+  margin-top: 0;
+}
+
+.reading-page .reading-overview h2::before {
+  color: var(--md-primary-fg-color);
+  content: "READ FIRST";
+  display: block;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  margin-bottom: .7rem;
+}
+
+.reading-page .reading-overview p {
+  color: var(--md-default-fg-color);
+  font-size: 1.1rem;
+  line-height: 1.9;
+  margin: 1.35em 0;
+}
+
+.reading-page .reading-overall {
+  background: var(--reading-soft-surface);
+  border: 1px solid var(--reading-border);
+  border-radius: 11px;
+  margin: 2.75rem 0 3rem;
+  padding: 1.15rem 1.4rem 1.25rem;
+}
+
+.reading-page .reading-overall h2 {
+  color: var(--md-default-fg-color);
+  font-size: 1.05rem;
+  margin: 0 0 .7rem;
+}
+
+.reading-page .reading-overall p {
+  color: var(--md-default-fg-color--light);
+  font-size: .97rem;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Sentence cards / original / Chinese meaning / keywords / structure
+   -------------------------------------------------------------------------- */
+.reading-page .reading-section-heading {
+  margin-top: 3.2rem;
+}
+
+.reading-page .reading-sentence-card {
+  background: var(--reading-surface);
+  border: 1px solid var(--reading-border-strong);
+  border-radius: 13px;
+  margin: 1.65rem 0;
+  padding: 1.65rem 1.8rem 1.8rem;
+}
+
+.reading-page .reading-sentence-card > :first-child { margin-top: 0; }
+.reading-page .reading-sentence-card > :last-child { margin-bottom: 0; }
+
+.reading-page .reading-sentence-number {
+  color: var(--md-default-fg-color);
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  margin: 0 0 1.8rem;
+  text-transform: uppercase;
+}
+
+.reading-page .reading-sentence-number {
+  font-size: 0;
+}
+
+.reading-page .reading-sentence-number::before {
+  color: var(--md-primary-fg-color);
+  content: attr(data-sentence-number) "  ";
+  font-size: .74rem;
+}
+
+.reading-page .reading-sentence-number::after {
+  color: var(--md-default-fg-color);
+  content: "SENTENCE";
+  font-size: .74rem;
+}
+
+.reading-page .reading-label {
+  color: var(--md-default-fg-color--light);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  line-height: 1.3;
+  margin: 1.35rem 0 .4rem;
+  text-transform: uppercase;
+}
+
+.reading-page .reading-original-label { margin-top: 0; }
+
+.reading-page .reading-original {
+  color: var(--md-default-fg-color);
+  font-size: 1.11rem;
+  font-weight: 600;
+  line-height: 1.86;
+  margin: 0 0 1.6rem;
+}
+
+.reading-page .reading-meaning {
+  background: color-mix(in srgb, var(--md-primary-fg-color) 5%, var(--md-default-bg-color));
+  border: 1px solid var(--reading-border);
+  border-radius: 9px;
+  color: var(--md-default-fg-color);
+  font-size: 1rem;
+  line-height: 1.85;
+  margin: 0 0 1.45rem;
+  padding: .75rem .95rem;
+}
+
+.reading-page .reading-keywords {
+  margin: 0 0 1.35rem;
+  padding-left: 1.2rem;
+}
+
+.reading-page .reading-keyword-item {
+  line-height: 1.65;
+  margin: .55rem 0;
+  padding-left: .2rem;
+}
+
+.reading-page .reading-keyword-item strong:first-child {
+  color: var(--md-default-fg-color);
+}
+
+.reading-page .reading-structure {
+  color: var(--md-default-fg-color--light);
+  font-size: .91rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Useful expressions
+   -------------------------------------------------------------------------- */
+.reading-page .reading-expression-card {
+  background: var(--reading-surface);
+  border: 1px solid var(--reading-border);
+  border-radius: 10px;
+  margin: .9rem 0;
+  padding: 1rem 1.2rem 1.1rem;
+}
+
+.reading-page .reading-expression-card > :first-child { margin-top: 0; }
+.reading-page .reading-expression-card > :last-child { margin-bottom: 0; }
+
+.reading-page .reading-expression-number {
+  color: var(--md-default-fg-color--light);
+  display: none;
+}
+
+.reading-page .reading-expression-label,
+.reading-page .reading-expression-meaning-label,
+.reading-page .reading-expression-usage-label {
+  display: none;
+}
+
+.reading-page .reading-expression-value {
+  color: var(--md-default-fg-color);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.reading-page .reading-expression-meaning {
+  color: var(--md-default-fg-color);
+  font-size: .93rem;
+  line-height: 1.7;
+  margin: .15rem 0 0;
+}
+
+.reading-page .reading-expression-usage {
+  color: var(--md-default-fg-color--light);
+  font-size: .86rem;
+  line-height: 1.65;
+  margin: .45rem 0 0;
+}
+
+/* Navigation / responsive behavior */
+@media (max-width: 60em) {
+  .reading-page .md-main__inner { grid-template-columns: minmax(0, 1fr); }
+  .reading-page .md-sidebar--primary { opacity: 1; }
 }
 
 @media (max-width: 44.9375em) {
-  .md-typeset { font-size: 0.92rem; }
-  .md-content__inner { padding-inline: 0.65rem; }
-  .reading-sentence-card { border-radius: 8px; padding: 1rem 1rem 1.1rem; }
-  .reading-overall { padding-inline: 1rem; }
+  .reading-page .md-content__inner { padding-inline: .8rem; }
+  .reading-page .md-typeset { font-size: .98rem; }
+  .reading-page .reading-header { margin-bottom: 2.2rem; }
+  .reading-page .reading-sentence-card { border-radius: 11px; margin: 1.25rem 0; padding: 1.1rem 1rem 1.2rem; }
+  .reading-page .reading-original { font-size: 1.04rem; }
+  .reading-page .reading-meaning { font-size: .96rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reading-page *, .reading-page *::before, .reading-page *::after { scroll-behavior: auto !important; transition: none !important; }
 }
