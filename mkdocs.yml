@@ -30,6 +30,9 @@ theme:
 extra_css:
   - assets/stylesheets/extra.css
 
+extra_javascript:
+  - assets/javascripts/reading.js
+
 plugins:
   - search
 
@@ -38,6 +41,7 @@ markdown_extensions:
   - md_in_html
   - toc:
       permalink: true
+      toc_depth: 2
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite

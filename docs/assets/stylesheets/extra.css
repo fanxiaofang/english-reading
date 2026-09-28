@@ -51,3 +51,77 @@
 .md-typeset pre > code {
   line-height: 1.55;
 }
+
+/* ---------------------------------------------------------------------------
+   English-reading presentation
+   --------------------------------------------------------------------------- */
+
+:root {
+  --reading-measure: 68ch;
+  --reading-card-border: color-mix(in srgb, var(--md-default-fg-color) 14%, transparent);
+  --reading-card-bg: color-mix(in srgb, var(--md-default-bg-color) 94%, var(--md-default-fg-color));
+  --reading-soft-bg: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--md-primary-fg-color));
+}
+
+.md-grid { max-width: 90rem; }
+.md-content__inner { max-width: 54rem; padding-bottom: 4rem; }
+.md-typeset { font-size: 0.94rem; line-height: 1.8; text-wrap: pretty; }
+.md-typeset p, .md-typeset li { line-height: 1.8; }
+.md-typeset p { margin: 1.15em 0; }
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 { text-wrap: balance; }
+.md-typeset h1 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.02em; margin-bottom: 0.45rem; }
+.md-typeset h2 { margin-top: 3.25rem; padding-top: 1rem; }
+.md-typeset h3 { margin-top: 2rem; }
+
+/* Article header and metadata */
+.md-content__inner > h1:first-child { margin-top: 0.5rem; }
+.reading-article-meta { color: var(--md-default-fg-color--light); font-size: 0.88rem; margin: 0.2rem 0; }
+.reading-article-meta a { color: var(--md-typeset-a-color); font-weight: 600; }
+.reading-header-spacer { height: 1.5rem; }
+
+/* English-first project overview */
+.reading-overview { font-size: 1.04rem; line-height: 1.9; max-width: var(--reading-measure); }
+.reading-overview p { margin: 1.35em 0; }
+.reading-overview-heading { border-bottom: 0; }
+
+/* Chinese comprehension aid */
+.reading-overall { background: var(--reading-soft-bg); border: 1px solid var(--reading-card-border); border-radius: 10px; margin: 1.5rem 0 2.5rem; padding: 0.5rem 1.35rem 1rem; }
+.reading-overall p { font-size: 0.95rem; }
+
+/* Sentence cards */
+.reading-sentence-card { background: var(--reading-card-bg); border: 1px solid var(--reading-card-border); border-radius: 10px; margin: 1.25rem 0; padding: 1.2rem 1.45rem 1.35rem; }
+.reading-sentence-card > :first-child { margin-top: 0; }
+.reading-sentence-card > :last-child { margin-bottom: 0; }
+.reading-sentence-card h3 { font-size: 1.1rem; margin: 0 0 1rem; }
+.reading-sentence-original { font-size: 1.04rem; line-height: 1.85; }
+.reading-sentence-label { color: var(--md-default-fg-color--light); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: -0.6rem !important; }
+.reading-sentence-meaning { border-top: 1px solid var(--reading-card-border); margin-top: 1rem !important; padding-top: 0.9rem; }
+.reading-sentence-card ul { margin: 0.45rem 0 1rem; }
+.reading-sentence-card li { margin: 0.25rem 0; }
+.reading-sentence-structure { color: var(--md-default-fg-color--light); font-size: 0.92rem; }
+
+/* Compact review cards */
+.reading-expression-card { border-top: 1px solid var(--reading-card-border); margin: 0; padding: 0.8rem 0 0.9rem; }
+.reading-expression-card h3 { font-size: 0.98rem; margin: 0 0 0.35rem; }
+.reading-expression-card p { margin: 0.35rem 0; }
+.reading-expression-card .reading-expression-label { color: var(--md-default-fg-color--light); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; }
+
+/* Keep navigation useful but secondary */
+.md-sidebar--secondary .md-nav__link { font-size: 0.78rem; }
+.md-sidebar--secondary .md-nav__item .md-nav__link { opacity: 0.78; }
+.md-sidebar--secondary .md-nav__item .md-nav__link--active { font-weight: 700; opacity: 1; }
+
+@media (prefers-color-scheme: dark) {
+  :root { --reading-card-bg: color-mix(in srgb, var(--md-default-bg-color) 94%, white); --reading-soft-bg: color-mix(in srgb, var(--md-default-bg-color) 96%, var(--md-primary-fg-color)); }
+}
+
+@media (max-width: 76.1875em) {
+  .md-content__inner { padding-inline: 1rem; }
+}
+
+@media (max-width: 44.9375em) {
+  .md-typeset { font-size: 0.92rem; }
+  .md-content__inner { padding-inline: 0.65rem; }
+  .reading-sentence-card { border-radius: 8px; padding: 1rem 1rem 1.1rem; }
+  .reading-overall { padding-inline: 1rem; }
+}
