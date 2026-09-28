@@ -1,0 +1,53 @@
+/* ---------------------------------------------------------------------------
+   Reading-oriented adjustments for long-form technical text.
+
+   These rules only tune measure, rhythm and line height. Colours, components
+   and layout are left to Material for MkDocs.
+   --------------------------------------------------------------------------- */
+
+/* Comfortable line length: cap the article column and let any extra width on
+   large screens go to the sidebars instead. */
+.md-grid {
+  max-width: 76rem;
+}
+
+.md-content__inner {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+/* More generous line height than the Material default (1.6). */
+.md-typeset {
+  line-height: 1.75;
+}
+
+.md-typeset p,
+.md-typeset li {
+  line-height: 1.75;
+}
+
+/* Paragraph rhythm that separates paragraphs clearly without splitting lists. */
+.md-typeset p {
+  margin: 1.2em 0;
+}
+
+.md-typeset li > p {
+  margin: 0.4em 0;
+}
+
+/* Keep headings tight internally, and give them room from the text above. */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  line-height: 1.3;
+}
+
+.md-typeset h2 {
+  margin-top: 2em;
+}
+
+/* Code blocks read as a single block rather than as spaced-out lines. */
+.md-typeset pre > code {
+  line-height: 1.55;
+}
