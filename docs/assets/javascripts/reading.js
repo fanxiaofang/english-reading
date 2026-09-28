@@ -37,6 +37,13 @@
     return wrapper;
   }
 
+  function wrapFollowingContent(heading, className) {
+    const elements = directSection(heading).slice(1);
+    if (!elements.length) return null;
+    if (heading.nextElementSibling?.classList.contains(className)) return heading.nextElementSibling;
+    return wrap(elements, className);
+  }
+
   function labelName(element) {
     return textOf(element).replace(/[：:]$/, "").trim().toLowerCase();
   }
@@ -111,7 +118,16 @@
     const overview = refreshedHeadings.find((heading) => OVERVIEW_HEADING.test(textOf(heading)));
     const overall = refreshedHeadings.find((heading) => OVERALL_HEADING.test(textOf(heading)));
     if (overview && !overview.parentElement?.classList.contains("reading-overview")) wrap(directSection(overview), "reading-overview");
-    if (overall && !overall.parentElement?.classList.contains("reading-overall")) wrap(directSection(overall), "reading-overall");
+    if (overall) {
+      overall.classList.add("reading-section-heading");
+      const card = wrapFollowingContent(overall, "reading-overall");
+      if (card && !card.querySelector(".reading-overall-label")) {
+        const label = document.createElement("div");
+        label.className = "reading-overall-label";
+        label.textContent = "整体理解";
+        card.prepend(label);
+      }
+    }
 
     article.querySelectorAll("h3, h4, h5").forEach((heading) => {
       const sentence = textOf(heading).match(SENTENCE_HEADING);

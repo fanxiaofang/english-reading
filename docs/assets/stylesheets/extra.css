@@ -146,22 +146,27 @@
   background: var(--reading-soft-surface);
   border: 1px solid var(--reading-border);
   border-radius: 11px;
-  margin: 2.75rem 0 3rem;
+  margin: 0 0 3rem;
   padding: 1.15rem 1.4rem 1.25rem;
 }
 
-.reading-page .reading-overall h2 {
-  color: var(--md-default-fg-color);
-  font-size: 1.05rem;
-  margin: 0 0 .7rem;
+.reading-page .reading-overall-label {
+  color: var(--md-default-fg-color--light);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  line-height: 1.3;
+  margin: 0 0 .65rem;
 }
 
 .reading-page .reading-overall p {
-  color: var(--md-default-fg-color--light);
+  color: var(--md-default-fg-color);
   font-size: .97rem;
   line-height: 1.85;
-  margin: 0;
+  margin: .7rem 0 0;
 }
+
+.reading-page .reading-overall > :last-child { margin-bottom: 0; }
 
 /* --------------------------------------------------------------------------
    Sentence cards / original / Chinese meaning / keywords / structure
