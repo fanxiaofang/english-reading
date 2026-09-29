@@ -52,22 +52,37 @@
     return /^(p|div)$/i.test(element?.tagName || "") && labelName(element) === label;
   }
 
+  function classifyKeywordItem(item) {
+    item.classList.add("reading-keyword-item");
+    const term = item.querySelector(":scope > strong:first-child");
+    if (!term) return;
+    term.classList.add("reading-keyword-term");
+    const definition = document.createElement("span");
+    definition.className = "reading-keyword-definition";
+    while (term.nextSibling) definition.appendChild(term.nextSibling);
+    item.appendChild(definition);
+  }
+
   function classifySentence(card) {
     const children = Array.from(card.children);
     children.forEach((element, index) => {
       const label = labelName(element);
       if (label === "original") {
         element.classList.add("reading-label", "reading-original-label");
+        element.textContent = element.textContent.replace(/[：:]$/, "");
         children[index + 1]?.classList.add("reading-original");
       } else if (label === "中文意思") {
         element.classList.add("reading-label", "reading-meaning-label");
+        element.textContent = element.textContent.replace(/[：:]$/, "");
         children[index + 1]?.classList.add("reading-meaning");
       } else if (label === "key words and expressions") {
         element.classList.add("reading-label", "reading-keywords-label");
+        element.textContent = element.textContent.replace(/[：:]$/, "");
         children[index + 1]?.classList.add("reading-keywords");
-        children[index + 1]?.querySelectorAll("li").forEach((item) => item.classList.add("reading-keyword-item"));
+        children[index + 1]?.querySelectorAll("li").forEach(classifyKeywordItem);
       } else if (label === "sentence structure") {
         element.classList.add("reading-label", "reading-structure-label");
+        element.textContent = element.textContent.replace(/[：:]$/, "");
         children[index + 1]?.classList.add("reading-structure");
       }
     });
